@@ -1,6 +1,5 @@
 main()
 #What does the user need to input?
-
 #User puts in the word; word=string
 #User puts in how many characters they want to be altered
 #L = how many total characters are in the string 
