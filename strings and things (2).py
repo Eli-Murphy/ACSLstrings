@@ -1,3 +1,9 @@
+'''
+Created 10/5/2021
+Strings and THings
+Documentation
+'''
+
 def main():
 #What does the user need to input?
 
