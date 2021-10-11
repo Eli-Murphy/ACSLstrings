@@ -14,7 +14,6 @@ def main():
     start = starting position
     direction = right or left, what direction are the "numberChars" amount of characters moved
     '''
-
     try:   
     word_string = (input('Enter word you would like altered'))
     if word_string.isalpha() == False:
