@@ -15,6 +15,39 @@ def main():
     direction = right or left, what direction are the "numberChars" amount of characters moved
     '''
 
+    try:   
+    word_string = (input('Enter word you would like altered'))
+    if word_string.isalpha() == False:
+        raise ValueError()
+except ValueError:
+    print('enter letters only')
+    
+try:
+    numberChars = int(input('how many characters do you want altered?'))
+    if not (numberChars >= 0 ):
+        raise ValueError()
+except ValueError:
+    print ('you must enter a number')
+    
+try:
+    start = (input('would you like to alter starting at the first or last character?'))
+    if start != 'first' and start != 'last':
+        raise ValueError()
+except ValueError:
+    print('invalid, please chose either first or last')
+
+if start == 'first':
+    word = word_string.split()
+    sliced = word_string[numberChars:]
+    print('your word:', sliced)
+
+if start == 'last':
+    word = word_string.split()
+    sliced = word_string[:-numberChars]
+    print('your word:', sliced)
+     
+main()
+
 def ls(numberChars, word):
     '''
     calls word and variable "numberChars" from main
