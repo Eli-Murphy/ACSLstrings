@@ -19,15 +19,12 @@ def rev(start, total,word):
     wordList = list(word)                                                         #Converts desired word to list
     i = slice(end,start,-1)                                                         #Creates index var that splits wordList into desired section and reverses the section
     revChar = wordList[i]                                                         #Assigns split to variable
-    print(revChar)
     del wordList[start+1:end+1]                                                #deletes section from original function
-    print(wordList)
     wordList.insert(start+1, revChar)                                          #This puts the reversed segment list into the wordList list
-    print(wordList)
-    flatList = [item for sublist in wordList for item in sublist]        #This flattens the list inside the list into one list
-    print(flatList)                     
+    flatList = [item for sublist in wordList for item in sublist]        #This flattens the list inside the list into one list            
     output = ''.join(flatList)                                                          #This converts the list into a string
     print("Output: " + output)
+    return output
     
     
     
