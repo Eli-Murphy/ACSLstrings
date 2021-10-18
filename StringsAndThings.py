@@ -15,8 +15,8 @@ def main():
     '''
     
     try:   
-        word_string = (input('Enter word you would like altered'))
-        if word_string.isalpha() == False:
+        word = input('Enter word you would like altered')
+        if word.isalpha() == False:
             raise ValueError()
     except ValueError:
         print('enter letters only')
@@ -36,13 +36,13 @@ def main():
         print('invalid, please chose either first or last')
     
     if start == 'first':
-        word = word_string.split()
-        sliced = word_string[numberChars:]
+        word = word.split()
+        sliced = word[numberChars:]
         print('your word:', sliced)
     
     if start == 'last':
-        word = word_string.split()
-        sliced = word_string[:-numberChars]
+        word = word.split()
+        sliced = word[:-numberChars]
         print('your word:', sliced)
      
 main()
@@ -92,4 +92,23 @@ def rev(start, total, word):
     call word from main, start with position "start" out of "total" 
     return the string starting with the last character (rightmost) and ending with the first (leftmost)
     '''
+    if start <= 0:
+        print("Error: Starting position must be greater then 0.") #DEBUG REMOVE WHEN NEEDED
+        return "Error: Starting position must be greater then 0."
+        main()
+    start = start -1                                                            #Dealing with offset by subtracting 1
+    total = total - 1                                                                   #Dealing with offset by subtracting 1
+    end = start+total                                                             #This calculates the end point by adding the total amount of chars effected
+    wordList = list(word)                                                         #Converts desired word to list
+    if start > 0:
+        revChar = wordList[end:start-1:-1]
+    else:
+        revChar = wordList[:end+1]
+        revChar = revChar[::-1]
+    del wordList[start:end+1]                                                #deletes section from original function
+    wordList.insert(start, revChar)                                          #This puts the reversed segment list into the wordList list
+    flatList = [item for sublist in wordList for item in sublist]        #This flattens the list inside the list into one list            
+    output = ''.join(flatList)                                                          #This converts the list into a string
+    print("Output: " + output) #DEBUG REMOVE WHEN NEEDED
+    return output
 
