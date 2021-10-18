@@ -1,5 +1,5 @@
 def main():
-    start=0
+    start=3
 
     total=3
     numberChars=2
