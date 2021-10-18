@@ -1,5 +1,5 @@
 def main():
-    start=3
+    start=4
 
     total=3
     numberChars=2
@@ -22,6 +22,9 @@ def rev(start, total,word):
     total = total - 1                                                                   #Dealing with offset by subtracting 1
     end = start+total                                                             #This calculates the end point by adding the total amount of chars effected
     wordList = list(word)                                                         #Converts desired word to list
+    if end > len(word):
+        print("Error: Desired segment of string not reachable (Word too short)")
+        return "Error: Desired segment of string not reachable (Word too short)"
     if start > 0:
         revChar = wordList[end:start-1:-1]
     else:
