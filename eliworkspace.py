@@ -1,5 +1,5 @@
 def main():
-    start=4
+    start=3
 
     total=3
     numberChars=2
@@ -7,12 +7,30 @@ def main():
     word= "COMPUTER"
     #mc(start,total,numberChars,direction, word)
     rev(start,total,word)
+    #mc(start,total,numberChars,direction,word)
     
     
 def mc(start,total,numberChars,direction, word):
-    wordList = list(word)
-    start = start - 1
-    print(wordList)
+    start = start -1
+    def rightrotate(subString, numberChars):
+        return leftrotate(subString, len(subString) - numberChars)
+    def leftrotate(subString,numberChars):
+        tmp = subString[numberChars : ] + subString[0 : numberChars]
+        return tmp
+        
+    if direction == "L":
+        total = total + start
+        subString = word[start:total]
+        print(word[:start] + leftrotate(subString,numberChars) + word[total:])
+        return (word[:start] + leftrotate(subString,numberChars) + word[total:])
+    
+    if direction == "R":
+        total = total + start
+        subString = word[start:total]
+        print(word[:start] + rightrotate(subString, numberChars) + word[total:])
+        return (word[:start] + rightrotate(subString, numberChars) + word[total:])
+ 
+    
     
 def rev(start, total,word): 
     if start <= 0:
