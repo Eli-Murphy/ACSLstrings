@@ -85,6 +85,24 @@ def mc(start,total,numberChars,direction, word):
     start at position "start" out of "total" and move "numberChars" amt of characters in the direction "direction"
     return the string following the above arguements
     '''
+    start = start -1
+    def rightrotate(subString, numberChars):
+        return leftrotate(subString, len(subString) - numberChars)
+    def leftrotate(subString,numberChars):
+        tmp = subString[numberChars : ] + subString[0 : numberChars]
+        return tmp
+        
+    if direction == "L":
+        total = total + start
+        subString = word[start:total]
+        print(word[:start] + leftrotate(subString,numberChars) + word[total:])
+        return (word[:start] + leftrotate(subString,numberChars) + word[total:])
+    
+    if direction == "R":
+        total = total + start
+        subString = word[start:total]
+        print(word[:start] + rightrotate(subString, numberChars) + word[total:])
+        return (word[:start] + rightrotate(subString, numberChars) + word[total:])
     
 def rev(start, total, word):
     '''
