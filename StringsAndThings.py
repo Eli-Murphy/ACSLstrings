@@ -30,8 +30,6 @@ def main():
         
     try:
         start = (input('would you like to alter starting at the first or last character?'))
-        if start != 'first' and start != 'last':
-            raise ValueError()
     except ValueError:
         print('invalid, please chose either first or last')
     
