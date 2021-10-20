@@ -15,7 +15,7 @@ def main():
     '''
     
     try:   
-        word = input('Enter word you would like altered')
+        word = input('Enter word you would like altered' )
         if word.isalpha() == False:
             raise ValueError()
     except ValueError:
