@@ -1,49 +1,15 @@
+     
 '''
 Created 10/5/2021
 Strings and THings
 Documentation
 '''
+word = ()
+total = ()
+start = ()
+numberChars = ()
+direction = ()
 
-def main():
-    '''
-    User puts in the word; word=string
-    word = user input that is being altered
-    User puts in how many characters they want to be altered
-    numberChars = amount of characters that will be altered 
-    start = starting position
-    direction = right or left, what direction are the "numberChars" amount of characters moved
-    '''
-    
-    try:   
-        word = input('Enter word you would like altered' )
-        if word.isalpha() == False:
-            raise ValueError()
-    except ValueError:
-        print('enter letters only')
-        
-    try:
-        numberChars = int(input('how many characters do you want altered?'))
-        if not (numberChars >= 0 ):
-            raise ValueError()
-    except ValueError:
-        print ('you must enter a number')
-        
-    try:
-        start = (input('would you like to alter starting at the first or last character?'))
-    except ValueError:
-        print('invalid, please chose either first or last')
-    
-    if start == 'first':
-        word = word.split()
-        sliced = word[numberChars:]
-        print('your word:', sliced)
-    
-    if start == 'last':
-        word = word.split()
-        sliced = word[:-numberChars]
-        print('your word:', sliced)
-     
-main()
 def ls(numberChars, word):
     '''
     calls word and variable "numberChars" from main
@@ -76,6 +42,13 @@ def rc(numberChars, word):
     start = after last character
     return the string with the last "numberChars" amt of characters moved to before the first (leftmost) character
     '''
+
+    if start == 'first':
+        word = word_string.split()
+        sliced = word_string[numberChars:]
+        print('your word:', sliced)
+
+
 def mc(start,total,numberChars,direction, word):
     '''
     calls word and variable "numberChars", "start", "total", "direction" from the main
@@ -128,3 +101,41 @@ def rev(start, total, word):
     print("Output: " + output) #DEBUG REMOVE WHEN NEEDED
     return output
 
+    
+def main():
+    '''
+    User puts in the word; word=string
+    word = user input that is being altered
+    User puts in how many characters they want to be altered
+    numberChars = amount of characters that will be altered 
+    start = starting position
+    direction = right or left, what direction are the "numberChars" amount of characters moved
+    '''
+   
+    try:   
+        word_string = (input('enter word you would like altered'))
+        if word_string.isalpha() == False:
+            raise ValueError()
+    except ValueError:
+        print('enter letters only')
+    
+    try:
+        numberChars = int(input('how many characters do you want altered?'))
+        if not (numberChars >= 0 ):
+            raise ValueError()
+    except ValueError:
+        print ('you must enter a number')
+    
+    try:
+        start = (input('would you like to alter starting at the first or last character?'))
+        if start != 'first' and start != 'last':
+            raise ValueError()
+    except ValueError:
+        print('invalid, please chose either first or last')
+        
+main()
+rev(start, total, word)
+mc(start,total,numberChars,direction, word)
+ls(numberChars, word)
+rs(numberChars, word)
+rc(numberChars, word)
