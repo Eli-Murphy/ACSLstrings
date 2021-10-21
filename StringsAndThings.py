@@ -12,50 +12,51 @@ direction = ()
 
 def ls(numberChars, word):
     '''
-    calls word and variable "numberChars" from main
-    Deletes the "numberChars" amt of characters starting with the first character (leftmost)
-    Inputs "numberChars" number of # at the end of the string
+    calls word and variable 'numberChars' from main
+    Deletes the 'numberChars' amt of characters starting with the first character (leftmost)
+    Inputs 'numberChars' number of # at the end of the string
     start = before first character
-    return the string with "numberChars" amt of characters deleted, starting from the first character (leftmost) AND "numberChars" amt of # after the last character (rightmost)
+    return the string with 'numberChars' amt of characters deleted, starting from the first character (leftmost) AND 'numberChars' amt of # after the last character (rightmost)
     '''
     
+    final_string = ()
+    final_string = word
+    word = word.split()
+    sliced = final_string[numberChars:] + "#" * numberChars
+    print('your word:', sliced)
+
 def rs(numberChars, word):
     '''
-    calls word and variable "numberChars" from main
-    Deletes the "numberChars" amt of characters starting with the last character (rightmost)
-    Inputs "numberChars" number of # at the beggining of the string
+    calls word and variable 'numberChars' from main
+    Deletes the 'numberChars' amt of characters starting with the last character (rightmost)
+    Inputs 'numberChars' number of # at the beggining of the string
     start = after last character
-    return the string with "numberChars" amt of characters deleted, starting from the last character (rightmost) AND "numberChars" amt of # before the first character (leftmost)
+    return the string with 'numberChars' amt of characters deleted, starting from the last character (rightmost) AND 'numberChars' amt of # before the first character (leftmost)
     '''
 def lc(numberChars, word):
     '''
-    calls word and variable "numberChars" from the main
-    takes "numberChars" amt of characters starting with the first character (leftmost) and moves "numberChars" amt of characters to after the last character (rightmost)
+    calls word and variable 'numberChars' from the main
+    takes 'numberChars' amt of characters starting with the first character (leftmost) and moves 'numberChars' amt of characters to after the last character (rightmost)
     start = before first character
-    return the string with the first "numberChars" amt of characters moved to after the last (rightmost) character
+    return the string with the first 'numberChars' amt of characters moved to after the last (rightmost) character
     '''
     
 def rc(numberChars, word): 
     '''
-    calls word and variable "numberChars" from the main
-    takes "numberChars" amt of characters starting with the last character (rightmost)and moves "numberChars" amt of characters to before the first character (leftmost)
+    calls word and variable 'numberChars' from the main
+    takes 'numberChars' amt of characters starting with the last character (rightmost)and moves 'numberChars' amt of characters to before the first character (leftmost)
     start = after last character
-    return the string with the last "numberChars" amt of characters moved to before the first (leftmost) character
+    return the string with the last 'numberChars' amt of characters moved to before the first (leftmost) character
     '''
-
-    if start == 'first':
-        word = word_string.split()
-        sliced = word_string[numberChars:]
-        print('your word:', sliced)
-
 
 def mc(start,total,numberChars,direction, word):
     '''
-    calls word and variable "numberChars", "start", "total", "direction" from the main
+    calls word and variable 'numberChars', 'start', 'total', 'direction' from the main
     start = before position inputted (instead of leftmost and rightmost it is start position)
-    start at position "start" out of "total" and move "numberChars" amt of characters in the direction "direction"
+    start at position 'start' out of 'total' and move 'numberChars' amt of characters in the direction 'direction'
     return the string following the above arguements
     '''
+    
     start = start -1                                                                                                    #Fixes user input 
     def rightrotate(subString, numberChars):                                                          #defines right rotate function
         return leftrotate(subString, len(subString) - numberChars)                           #inverts left rotate ot become right rotate
@@ -63,27 +64,29 @@ def mc(start,total,numberChars,direction, word):
         segment = subString[numberChars : ] + subString[0 : numberChars]               #rotates section of word
         return segment
         
-    if direction == "L":
+    if direction == 'L':
         total = total + start                                                                                           
         subString = word[start:total]                                                                           #This creates a segment of the word that the user wants to change
         print(word[:start] + leftrotate(subString,numberChars) + word[total:])           #DEBUG | REMOVE
         return (word[:start] + leftrotate(subString,numberChars) + word[total:])        #Returns the beginning of the word, the rotated segment, and the end
     
-    if direction == "R":
+    if direction == 'R':
         total = total + start
         subString = word[start:total]                                                                           #This creates a segment of the word that the user wants to change
         print(word[:start] + rightrotate(subString, numberChars) + word[total:])        #DEBUG | REMOVE
         return (word[:start] + rightrotate(subString, numberChars) + word[total:])     #Returns the beginning of the word, the rotated segment, and the end
     
+    
 def rev(start, total, word):
     '''
     reverse order of word 
-    call word from main, start with position "start" out of "total" 
+    call word from main, start with position 'start' out of 'total' 
     return the string starting with the last character (rightmost) and ending with the first (leftmost)
     '''
     if start <= 0:
-        print("Error: Starting position must be greater then 0.") #DEBUG REMOVE WHEN NEEDED
-        return "Error: Starting position must be greater then 0."
+        print('Error: Starting position must be greater then 0.') #DEBUG REMOVE WHEN NEEDED
+        return 'Error: Starting position must be greater then 0.'
+    
         main()
     start = start -1                                                            #Dealing with offset by subtracting 1
     total = total - 1                                                                   #Dealing with offset by subtracting 1
@@ -98,9 +101,9 @@ def rev(start, total, word):
     wordList.insert(start, revChar)                                          #This puts the reversed segment list into the wordList list
     flatList = [item for sublist in wordList for item in sublist]        #This flattens the list inside the list into one list            
     output = ''.join(flatList)                                                          #This converts the list into a string
-    print("Output: " + output) #DEBUG REMOVE WHEN NEEDED
+    print('Output: ' + output) #DEBUG REMOVE WHEN NEEDED
     return output
-
+    
     
 def main():
     '''
@@ -109,33 +112,22 @@ def main():
     User puts in how many characters they want to be altered
     numberChars = amount of characters that will be altered 
     start = starting position
-    direction = right or left, what direction are the "numberChars" amount of characters moved
+    direction = right or left, what direction are the 'numberChars' amount of characters moved
     '''
-   
-    try:   
-        word_string = (input('enter word you would like altered'))
-        if word_string.isalpha() == False:
-            raise ValueError()
-    except ValueError:
-        print('enter letters only')
     
-    try:
-        numberChars = int(input('how many characters do you want altered?'))
-        if not (numberChars >= 0 ):
-            raise ValueError()
-    except ValueError:
-        print ('you must enter a number')
+    word = input('enter word you would like altered')
+    numberChars = int(input('how many characters do you want altered?'))
+    start = input('where would you like to start altering the string?')
+    direction = input('what direction would you like to alter towards, L or R?')
+    ls(numberChars, word)
     
-    try:
-        start = (input('would you like to alter starting at the first or last character?'))
-        if start != 'first' and start != 'last':
-            raise ValueError()
-    except ValueError:
-        print('invalid, please chose either first or last')
-        
-main()
-rev(start, total, word)
-mc(start,total,numberChars,direction, word)
-ls(numberChars, word)
-rs(numberChars, word)
-rc(numberChars, word)
+    
+    rev(start, total, word)
+    mc(start,total,numberChars,direction, word)
+    ls(numberChars, word)
+    lc(numberChars, word)
+    rs(numberChars, word)
+    rc(numberChars, word)
+
+if __name__ == "__main__":
+    main()
