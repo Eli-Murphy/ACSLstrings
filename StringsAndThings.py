@@ -23,7 +23,7 @@ def ls(numberChars, word):
     final_string = word
     word = word.split()
     sliced = final_string[numberChars:] + "#" * numberChars
-    print('your word:', sliced)
+    print('ls version: ', sliced)
 
 def rs(numberChars, word):
     '''
