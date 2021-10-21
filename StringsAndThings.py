@@ -33,6 +33,12 @@ def rs(numberChars, word):
     start = after last character
     return the string with 'numberChars' amt of characters deleted, starting from the last character (rightmost) AND 'numberChars' amt of # before the first character (leftmost)
     '''
+    final_string = ()
+    final_string = word
+    word = word.split()
+    sliced = "#" * numberChars + final_string[:numberChars] 
+    print('rs version:', sliced)
+    
 def lc(numberChars, word):
     '''
     calls word and variable 'numberChars' from the main
