@@ -40,6 +40,8 @@ def lc(numberChars, word):
     start = before first character
     return the string with the first 'numberChars' amt of characters moved to after the last (rightmost) character
     '''
+    part = word[0:numberChars] 
+    print('lc version:' , word[numberChars:] + part)
     
 def rc(numberChars, word): 
     '''
@@ -118,16 +120,14 @@ def main():
     word = input('enter word you would like altered')
     numberChars = int(input('how many characters do you want altered?'))
     start = input('where would you like to start altering the string?')
-    direction = input('what direction would you like to alter towards, L or R?')
-    ls(numberChars, word)
+    direction = input('what direction would you like to alter towards, L or R?')    
     
-    
-    rev(start, total, word)
-    mc(start,total,numberChars,direction, word)
     ls(numberChars, word)
     lc(numberChars, word)
     rs(numberChars, word)
     rc(numberChars, word)
+    rev(start, total, word)
+    mc(start,total,numberChars,direction, word)
 
 if __name__ == "__main__":
     main()
