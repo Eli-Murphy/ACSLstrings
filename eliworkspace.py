@@ -1,12 +1,12 @@
 def main():
     start=3
 
-    total=3
+    total=3 
     numberChars=2
-    direction="R"
-    word= "COMPUTER"
-    #mc(start,total,numberChars,direction, word)
-    rev(start,total,word)
+    direction="L"
+    word= "logan"
+    mc(start,total,numberChars,direction, word)
+    #rev(start,total,word)
     #mc(start,total,numberChars,direction,word)
     
     
