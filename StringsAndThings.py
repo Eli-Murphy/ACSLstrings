@@ -64,25 +64,25 @@ def mc(start,total,numberChars,direction, word):
     start at position 'start' out of 'total' and move 'numberChars' amt of characters in the direction 'direction'
     return the string following the above arguements
     '''
-    
-    start = start -1                                                                                                    #Fixes user input 
-    def rightrotate(subString, numberChars):                                                          #defines right rotate function
-        return leftrotate(subString, len(subString) - numberChars)                           #inverts left rotate ot become right rotate
-    def leftrotate(subString,numberChars):                                                             #defines left rotate
-        segment = subString[numberChars : ] + subString[0 : numberChars]               #rotates section of word
-        return segment
+    start = start -1
+    def rightrotate(subString, numberChars):
+        return leftrotate(subString, len(subString) - numberChars)
+    def leftrotate(subString,numberChars):
+        tmp = subString[numberChars : ] + subString[0 : numberChars]
+        return tmp
         
-    if direction == 'L':
-        total = total + start                                                                                           
-        subString = word[start:total]                                                                           #This creates a segment of the word that the user wants to change
-        print(word[:start] + leftrotate(subString,numberChars) + word[total:])           #DEBUG | REMOVE
-        return (word[:start] + leftrotate(subString,numberChars) + word[total:])        #Returns the beginning of the word, the rotated segment, and the end
-    
-    if direction == 'R':
+    if direction == 'L' or direction == 'l':
         total = total + start
-        subString = word[start:total]                                                                           #This creates a segment of the word that the user wants to change
-        print(word[:start] + rightrotate(subString, numberChars) + word[total:])        #DEBUG | REMOVE
-        return (word[:start] + rightrotate(subString, numberChars) + word[total:])     #Returns the beginning of the word, the rotated segment, and the end
+        subString = word[start:total]
+        print('mc version:' , word[:start] + leftrotate(subString,numberChars) + word[total:])
+        return (word[:start] + leftrotate(subString,numberChars) + word[total:])
+    
+    if direction == 'R' or direction == 'r':
+        total = total + start
+        subString = word[start:total]
+        print('mc version:' , word[:start] + rightrotate(subString, numberChars) + word[total:])
+        return (word[:start] + rightrotate(subString, numberChars) + word[total:])
+ 
     
     
 def rev(start, total, word):
@@ -91,14 +91,10 @@ def rev(start, total, word):
     call word from main, start with position 'start' out of 'total' 
     return the string starting with the last character (rightmost) and ending with the first (leftmost)
     '''
-    if start <= 0:
-        print('Error: Starting position must be greater then 0.') #DEBUG REMOVE WHEN NEEDED
-        return 'Error: Starting position must be greater then 0.'
     
-        main()
-    start = start -1                                                            #Dealing with offset by subtracting 1
+    start = start - 1                                                            #Dealing with offset by subtracting 1
     total = total - 1                                                                   #Dealing with offset by subtracting 1
-    end = start+total                                                             #This calculates the end point by adding the total amount of chars effected
+    end = start + total                                                             #This calculates the end point by adding the total amount of chars effected
     wordList = list(word)                                                         #Converts desired word to list
     if start > 0:
         revChar = wordList[end:start-1:-1]
@@ -109,7 +105,7 @@ def rev(start, total, word):
     wordList.insert(start, revChar)                                          #This puts the reversed segment list into the wordList list
     flatList = [item for sublist in wordList for item in sublist]        #This flattens the list inside the list into one list            
     output = ''.join(flatList)                                                          #This converts the list into a string
-    print('Output: ' + output) #DEBUG REMOVE WHEN NEEDED
+    print('rev version: ' + output) #DEBUG REMOVE WHEN NEEDED
     return output
     
     
@@ -124,10 +120,11 @@ def main():
     '''
     
     word = input('enter word you would like altered')
-    numberChars = int(input('how many characters do you want altered?'))
-    start = input('where would you like to start altering the string?')
+    total = int(input('how many  characters do you want to select'))
+    numberChars = int(input('how many times do you want the characters to be rotated?'))
+    start = int(input('where would you like to start altering the string?'))
     direction = input('what direction would you like to alter towards, L or R?')    
-    
+
     ls(numberChars, word)
     lc(numberChars, word)
     rs(numberChars, word)
