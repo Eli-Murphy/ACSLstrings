@@ -19,11 +19,11 @@ def ls(numberChars, word):
     return the string with 'numberChars' amt of characters deleted, starting from the first character (leftmost) AND 'numberChars' amt of # after the last character (rightmost)
     '''
     
-    final_string = ()
-    final_string = word
-    word = word.split()
-    sliced = final_string[numberChars:] + "#" * numberChars
-    print('ls version: ', sliced)
+    tot = len(word) - numberChars
+    modstring = ()
+    size = len(word)
+    modstring = word[size - numberChars:]
+    print('ls version:' , modstring + "#" * tot)    
 
 def rs(numberChars, word):
     '''
@@ -33,12 +33,15 @@ def rs(numberChars, word):
     start = after last character
     return the string with 'numberChars' amt of characters deleted, starting from the last character (rightmost) AND 'numberChars' amt of # before the first character (leftmost)
     '''
-    final_string = ()
-    final_string = word
+    
+    finalstring = ()
+    tot = len(word) - numberChars
+    finalstring = word 
     word = word.split()
-    sliced = "#" * numberChars + final_string[:numberChars] 
+    sliced = "#" * tot + finalstring[:numberChars]
     print('rs version:', sliced)
     
+
 def lc(numberChars, word):
     '''
     calls word and variable 'numberChars' from the main
@@ -55,8 +58,14 @@ def rc(numberChars, word):
     takes 'numberChars' amt of characters starting with the last character (rightmost)and moves 'numberChars' amt of characters to before the first character (leftmost)
     start = after last character
     return the string with the last 'numberChars' amt of characters moved to before the first (leftmost) character
+    #anlog
     '''
-
+    rcfinal = ()
+    rcfinal = word 
+    part2 = rcfinal[-numberChars:]
+    print('rc version:' , part2 + word[:-numberChars])
+#    print('rc version:' , rcfinal[numberChars:] + part +)
+    
 def mc(start,total,numberChars,direction, word):
     '''
     calls word and variable 'numberChars', 'start', 'total', 'direction' from the main
