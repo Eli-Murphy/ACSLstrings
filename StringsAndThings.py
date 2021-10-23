@@ -128,18 +128,57 @@ def main():
     direction = right or left, what direction are the 'numberChars' amount of characters moved
     '''
     
-    word = input('enter word you would like altered')
-    total = int(input('how many  characters do you want to select'))
-    numberChars = int(input('how many times do you want the characters to be rotated?'))
-    start = int(input('where would you like to start altering the string?'))
-    direction = input('what direction would you like to alter towards, L or R?')    
+    
+    try:   
+        word = input('enter word you would like altered')
+        if word.isalpha() == False:
+            raise ValueError()
+    except ValueError:
+        print('enter letters only')
 
-    ls(numberChars, word)
+    try:
+        numberChars = int(input('how many times do you want the characters to be rotated?'))
+        if not (numberChars >= 0 ):
+            raise ValueError()
+    except ValueError:
+        print ('you must enter a number')
+
+    try:
+        start = int(input('where would you like to start altering the string?'))
+        if not (start >= 0 ):
+            raise ValueError()
+    except ValueError:
+        print ('you must enter a number')
+    
+    try:
+        total = int(input('how many  characters do you want to select'))
+        if not (numberChars >= 0 ):
+            raise ValueError()
+    except ValueError:
+        print ('you must enter a number')
+
+    try:
+        direction = input('what direction would you like to alter towards, L or R?')    
+        if not  direction == 'L' or direction == 'l' or direction == 'r' or direction == 'R':
+            raise ValueError()
+    except ValueError:
+        print ('you must enter either L or R')
+
     lc(numberChars, word)
     rs(numberChars, word)
+    ls(numberChars, word)
     rc(numberChars, word)
     rev(start, total, word)
     mc(start,total,numberChars,direction, word)
 
 if __name__ == "__main__":
     main()
+
+'''
+    word = input('enter word you would like altered')
+    total = int(input('how many  characters do you want to select'))
+    numberChars = int(input('how many times do you want the characters to be rotated?'))
+    start = int(input('where would you like to start altering the string?'))
+    direction = input('what direction would you like to alter towards, L or R?')    
+'''
+   
