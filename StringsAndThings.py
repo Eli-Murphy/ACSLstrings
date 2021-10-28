@@ -74,24 +74,28 @@ def mc(start,total,numberChars,direction, word):
     return the string following the above arguements
     '''
     start = start -1
-    def rightrotate(subString, numberChars):
-        return leftrotate(subString, len(subString) - numberChars)
-    def leftrotate(subString,numberChars):
+    def RR(subString, numberChars):
+        return LR(subString, len(subString) - numberChars)
+    def LR(subString,numberChars):
         tmp = subString[numberChars : ] + subString[0 : numberChars]
         return tmp
         
     if direction == 'L' or direction == 'l':
         total = total + start
         subString = word[start:total]
-        print('mc version:' , word[:start] + leftrotate(subString,numberChars) + word[total:])
-        return (word[:start] + leftrotate(subString,numberChars) + word[total:])
+        firstseg = word[:start]
+        modedseg = LR(subString,numberChars)
+        lastseg = word[total:]
+        return (firstseg+modedseg+lastseg)
+    
     
     if direction == 'R' or direction == 'r':
         total = total + start
         subString = word[start:total]
-        print('mc version:' , word[:start] + rightrotate(subString, numberChars) + word[total:])
-        return (word[:start] + rightrotate(subString, numberChars) + word[total:])
- 
+        firstseg = word[:start]
+        modedseg = RR(subString,numberChars)
+        lastseg = word[total:]
+        return (firstseg+modedseg+lastseg)
     
     
 def rev(start, total, word):
