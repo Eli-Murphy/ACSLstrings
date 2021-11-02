@@ -215,37 +215,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-    '''
-    except ValueError:
-        print('enter letters only')
-
-    try:
-        numberChars = int(input('how many times do you want the characters to be rotated?'))
-        if not (numberChars >= 0 ):
-            raise ValueError()
-    except ValueError:
-        print ('you must enter a number')
-
-    try:
-        start = int(input('where would you like to start altering the string?'))
-        if not (start >= 0 ):
-            raise ValueError()
-    except ValueError:
-        print ('you must enter a number')
-    
-    try:
-        total = int(input('how many  characters do you want to select'))
-        if not (numberChars >= 0 ):
-            raise ValueError()
-    except ValueError:
-        print ('you must enter a number')
-
-    try:
-        direction = input('what direction would you like to alter towards, L or R?')    
-        if not  direction == 'L' or direction == 'l' or direction == 'r' or direction == 'R':
-            raise ValueError()
-    except ValueError:
-        print ('you must enter either L or R')
-    '''
-
    
