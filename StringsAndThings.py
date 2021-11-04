@@ -13,86 +13,76 @@ run the program until hits wordlist:-1
 '''
 
 
-
 def main():  
+
     try:
-        functionCheck = False
         userinput = input('enter input:')
         wordlist = userinput.split('/')
-        namevariable = wordlist[-1]
-        size = len(namevariable)
         stringinput = wordlist[-1]
+        size = len(stringinput)
         for item in wordlist[:-1]:
             if item[0:2] == "LS":      
-                numberChars = int(item[3:])
+                numberChars = int(item[3:4])
                 stringinput = ls(stringinput, numberChars)
                 functionCheck = True
             elif item[0:2] == "RS":      
-                numberChars = int(item[3:])
+                numberChars = int(item[3:4])
                 stringinput = rs(stringinput, numberChars)
-                functionCheck = True
             elif item[0:2] == "RC":      
-                numberChars = int(item[3:])
+                numberChars = int(item[3:4])
                 stringinput = rc(stringinput, numberChars)
-                functionCheck = True
             elif item[0:2] == "LC":      
-                numberChars = int(item[3:])
+                numberChars = int(item[3:4])
                 stringinput = lc(stringinput, numberChars)
-                functionCheck = True
             elif item[0:3] == "REV":      
-                numberChars = int(item[4])
-                total = int(item[5])
+                start = int(item[4:5])
+                total = int(item[5:6])
                 stringinput = rev(start, total, stringinput)
-                functionCheck = True
             elif item[0:2] == "MC":      
-                start = int(item[3])
-                total = int(item[4])
-                numberChars = int(item[5])
-                direction = item[6]
+                start = int(item[3:4])
+                total = int(item[4:5])
+                numberChars = int(item[5:6])
+                direction = item[6:7]
                 stringinput = mc(start,total,numberChars,direction, stringinput)
-                functionCheck = True
             else:
                 print('input error')
                 break
-            
-        if functionCheck == True:
-            print('Final Output:' , stringinput)
-        else:
-            print('input error')
-            
+        print('Final Output:' , stringinput)
+
     except:
-        print('input error') 
+        print('1input error') 
 
 def ls(stringinput, numberChars):
-    size = len(stringinput)
-    tot = size - int(numberChars) #takes the total size of the item - how many you want to alter
-    modstring = ()
-    modstring = stringinput[:tot] #takes tot amt of main varaible
-    namevariable = modstring + "#" * numberChars #string + #*numberFin
-    return namevariable
+    finalstring = ""
+    tot = len(stringinput) - int(numberChars)
+    finalstring = stringinput 
+    stringinput = stringinput.split()
+    stringinput = finalstring[-tot:] + "#" * numberChars 
+    return stringinput
     
 def rs(stringinput, numberChars):
+    tot = len(stringinput) - int(numberChars)
+    modstring = ()
     size = len(stringinput)
-    tot = size - int(numberChars) #takes the total size of the item - how many you want to alter
-    namevariable = "#" * numberChars + stringinput[:tot] #string + #*numberFin
-    return namevariable
-    
+    modstring = stringinput[:tot]
+    stringinput = "#" * numberChars + modstring     
+    return stringinput
+ 
 def rc(stringinput, numberChars):
     size = len(stringinput)
     tot = size - int(numberChars) #takes the total size of the item - how many you want to alter
     part = stringinput[-(int(numberChars)):]    #
-    namevariable = part + stringinput[:-(int(numberChars))]
-    return namevariable
+    stringinput = part + stringinput[:-(int(numberChars))]
+    return stringinput
 
 def lc(stringinput, numberChars):
-    size = len(stringinput)
-    tot = size - int(numberChars) #takes the total size of the item - how many you want to alter
-    part = stringinput[:(int(numberChars))]    #
-    namevariable = stringinput[:(int(numberChars))] + part 
-    return namevariable
+    part = stringinput[0:int(numberChars)] 
+    stringinput = stringinput[int(numberChars):] + part    
+    return stringinput
+
     
 def mc(start,total,numberChars,direction, stringinput):
-    size = len(stringinput)
+    start = start -1
     def rightrotate(subString, numberChars):
         return leftrotate(subString, len(subString) - int(numberChars))
     def leftrotate(subString, numberChars):
@@ -101,29 +91,30 @@ def mc(start,total,numberChars,direction, stringinput):
         start = int(start) -1
         total = int(total) + int(start)
         subString = stringinput[(int(start)):(int(total))]
-        namevariable = stringinput[:(int(start))] + leftrotate(subString, numberChars) + stringinput[(int(total)):]
-        return namevariable
+        stringinput = stringinput[:(int(start))] + leftrotate(subString, numberChars) + stringinput[(int(total)):]
+        return stringinput
     if direction == 'R':
         total = int(total) + int(start)
         subString = stringinput[(int(start)):(int(total))]
-        namevariable = stringinput[:(int(start))] + rightrotate(subString, numberChars) + stringinput[(int(total)):]
-        return namevariable
-      
+        stringinput = stringinput[:(int(start))] + rightrotate(subString, numberChars) + stringinput[(int(total)):]
+        return stringinput
+    
+    
 def rev(start, total, stringinput):
-    start = int(start) -1
-    total = int(total) -1                                                                 #Dealing with offset by subtracting 1
-    end = int(total) + int(start)                                                          #This calculates the end point by adding the total amount of chars effected
+    start = start - 1
+    total = total - 1                                                                 #Dealing with offset by subtracting 1
+    end = int(start) + int(total)                                                    #This calculates the end point by adding the total amount of chars effected
     wordList = list(stringinput)                                                         #Converts desired item to list
-    if (int(start)) > 0:
-        revChar = wordList[end:(int(start))-1:-1]
+    if int(start) > 0:
+        revChar = wordList[int(end):int(start - 1):-1]
     else:
-        revChar = wordList[:end+1]
+        revChar = wordList[:int(end + 1)]
         revChar = revChar[::-1]
-    del wordList[(int(start)):end+1]                                                #deletes section from original function
-    wordList.insert((int(start)), revChar)                                          #This puts the reversed segment list into the wordList list
+    del wordList[int(start):int(end + 1)]                                                #deletes section from original function
+    wordList.insert(int(start), revChar)                                          #This puts the reversed segment list into the wordList list
     flatList = [item for sublist in wordList for item in sublist]        #This flattens the list inside the list into one list            
-    namevariable = ''.join(flatList) 
-    return namevariable
+    stringinput = ''.join(flatList) 
+    return stringinput
 
 if __name__ == "__main__":
     main()
