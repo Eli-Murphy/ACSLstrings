@@ -114,11 +114,12 @@ def main():
                 direction = word[6]
                 stringinput = mc(start,total,numberChars,direction, stringinput)
                 functionCheck = True
-            else: 
-                print('input error')
-                break
-            if functionCheck == True:
-                print('Final Output:' , stringinput)
+            
+            
+        if functionCheck == True:
+            print('Final Output:' , stringinput)
+        else:
+            print('input error')
             
     except:
         print('input error')
@@ -126,6 +127,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
