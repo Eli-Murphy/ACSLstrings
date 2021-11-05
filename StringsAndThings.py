@@ -43,7 +43,7 @@ def main():
                 total = int(item[4:5])
                 numberChars = int(item[5:6])
                 direction = item[6:7]
-                stringinput = mc(start,total,numberChars,direction, stringinput)
+                stringinput = mc(start, total, numberChars, direction, stringinput)
             else:
                 print('input error')
                 break
@@ -81,25 +81,26 @@ def lc(stringinput, numberChars):
     return stringinput
 
     
-def mc(start,total,numberChars,direction, stringinput):
+def mc(start, total, numberChars, direction, stringinput):
     start = start -1
     def rightrotate(subString, numberChars):
-        return leftrotate(subString, len(subString) - int(numberChars))
+        return leftrotate(subString, len(subString) - numberChars)
     def leftrotate(subString, numberChars):
-        return subString[(int(numberChars)) : ] + subString[0 : (int(numberChars))]
-    if direction == 'L':
-        start = int(start) -1
-        total = int(total) + int(start)
-        subString = stringinput[(int(start)):(int(total))]
+        tmp = subString[numberChars : ] + subString[0 : numberChars]
+        return tmp
+        
+    if direction == 'L' or direction == 'l':
+        total = total + start
+        subString = stringinput[start:total]
         stringinput = stringinput[:(int(start))] + leftrotate(subString, numberChars) + stringinput[(int(total)):]
         return stringinput
-    if direction == 'R':
-        total = int(total) + int(start)
-        subString = stringinput[(int(start)):(int(total))]
-        stringinput = stringinput[:(int(start))] + rightrotate(subString, numberChars) + stringinput[(int(total)):]
+        
+    if direction == 'R' or direction == 'r':
+        total = total + start
+        subString = stringinput[start:total]
+        stringinput = stringinput[:int(start)] + rightrotate(subString, numberChars) + stringinput[int(total):]
         return stringinput
-    
-    
+        
 def rev(start, total, stringinput):
     start = start - 1
     total = total - 1                                                                 #Dealing with offset by subtracting 1
@@ -118,6 +119,3 @@ def rev(start, total, stringinput):
 
 if __name__ == "__main__":
     main()
-
-
-
