@@ -11,6 +11,8 @@
 
 This is a school project where Elijah Murphy, Logan Osher, and Jack Sipple were assigned to create a string modifier project. We were given words that was needed to modify to output a specific string.
 
+###### PLEASE NOTE that this .md file was written by Eli Murphy. Code attached is not 100% Eli Murphy's code. 
+
 ## Project Info:
 PROBLEM: Given a character string and a list of functions that operate on strings,
 calculate the resulting string.  
@@ -44,4 +46,4 @@ Please contact me at...
 Copyright (c) 2022 Elijah A. Murphy  
 Distributed under the terms of the MIT License.  
 SPDX-License-Identifier: MIT  
-This code is part of the Battleship project (https://github.com/Eli-Murphy/Battleship)  
+This code is part of the Battleship project (https://github.com/Eli-Murphy/ACSLstrings)  
